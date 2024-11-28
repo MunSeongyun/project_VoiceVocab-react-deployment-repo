@@ -27,7 +27,8 @@ const Home = () => {
       <div>대화에서 놓친 단어들을 빠르게 정리해보세요!</div>
       
       {isFile ? <form onSubmit={(e)=>onSubmit(e)}>
-        <input type="file" onChange={
+        <div>파일은 wav형식이여야 하고, 480mb이하여야 합니다.</div>
+        <input type="file" accept='.wav' onChange={
           (e)=>{setVoiceFile(
             e.target.files ? e.target.files[0] : null
           )}
