@@ -20,10 +20,10 @@ const VocabularyList = () => {
         return (
           <div>
             id: {item.id} <br/>
-            user_id: {item.user_id} <br/>
-            file_url: {item.file_url} <br/>
-            script_url: {item.script_url} <br/>
-            vocabulary_name: {item.vocabulary_name} <br/>
+            userId: {item.userId} <br/>
+            fileUrl: {item.fileUrl} <br/>
+            scriptUrl: {item.scriptUrl} <br/>
+            vocabularyName: {item.vocabularyName} <br/>
           </div>
         )
       })}

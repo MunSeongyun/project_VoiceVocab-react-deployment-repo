@@ -6,8 +6,8 @@ export type WordSelectDetailProps = {
 
 export type VocabularyListType = {
     id:number,
-    user_id:number,
-    file_url:string,
-    script_url:string,
-    vocabulary_name:string
+    userId:number,
+    fileUrl:string,
+    scriptUrl:string,
+    vocabularyName:string
 }
