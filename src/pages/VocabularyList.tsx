@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { VocabularyListType } from '../common/types'
+import VocabularyListItem from '../components/VocabularyListItem'
 
 const VocabularyList = () => {
   const [list,setList] = useState<VocabularyListType[]>([])
@@ -18,17 +19,8 @@ const VocabularyList = () => {
   },[])
   return (
     <div>
-      {list.map((item)=>{
-        return (
-          <div>
-            id: {item.id} <br/>
-            userId: {item.userId} <br/>
-            fileUrl: {item.fileUrl} <br/>
-            scriptUrl: {item.scriptUrl} <br/>
-            vocabularyName: {item.vocabularyName} <br/>
-          </div>
-        )
-      })}
+      <div>단어장 목록</div>
+      {list.map((item)=><VocabularyListItem key={item.id} {...item}/>)}
     </div>
   )
 }

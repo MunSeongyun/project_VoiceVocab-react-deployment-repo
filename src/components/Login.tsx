@@ -1,17 +1,28 @@
-import React from 'react'
+import { useAuth } from "../hooks/auth"
 
 const Login = () => {
 
+    const {user, login, isLoading} = useAuth()
 
-    const onClick = () => {
-        window.location.href=`${import.meta.env.VITE_BACKEND_URL}/auth/login`
+    if(isLoading){
+      return (
+        <div>불러오는 중...</div>
+      )
     }
-
-  return (
-    <div>
-      <button onClick={onClick}>로그인</button>
-    </div>
-  )
+    if(!isLoading && !user){
+      return (
+        <div>
+          <button onClick={login}>로그인</button>
+        </div>
+      )
+    }
+    return (
+      <>
+        <div>{user.name} 님 환영합니다!</div>
+      </>
+      
+    )
+    
 }
 
 export default Login
