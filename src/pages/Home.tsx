@@ -12,7 +12,8 @@ const Home = () => {
       formData.append('file',voiceFile)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/generate`,{
         method:"POST",
-        body:formData
+        body:formData,
+        credentials:'include'
       })
       if(response.ok){
         const responseData = await response.json()

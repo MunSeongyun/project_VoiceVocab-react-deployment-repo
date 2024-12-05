@@ -20,6 +20,7 @@ const WordSelect = () => {
     }
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/save`,{
       method:'POST',
+      credentials:'include',
       headers:{
         'Content-Type':'application/json'
       },

@@ -6,7 +6,9 @@ const VocabularyList = () => {
 
   useEffect(()=>{
     async function voca() {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/list/1`)
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/list`,{
+        credentials:'include'
+      })
       if(response.ok){
         const data = await response.json()
         setList(data.data)
