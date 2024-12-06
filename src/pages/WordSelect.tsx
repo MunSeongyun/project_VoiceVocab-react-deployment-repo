@@ -1,8 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import WordSelectDetail from '../components/WordSelectDetail'
 import { useState } from 'react'
-
+import Modal from '../components/Modal'
 const WordSelect = () => {
+  const [modal, setModal] = useState<boolean>(false)
   const {state} = useLocation()
   const [knownWordList, setKnownWordList] = useState<Array<string>>([])
   const navigate = useNavigate()
@@ -13,6 +14,7 @@ const WordSelect = () => {
     setKnownWordList(prev=>prev.filter((item)=>item!==word))
   }
   const onSave = async () => {
+    setModal(true)
     const wordList:Set<string> = new Set(state.wordList)
     const knownWord:Set<string> = new Set(knownWordList)
     for (const word of knownWord){
@@ -36,6 +38,7 @@ const WordSelect = () => {
   }
   return (
     <div>
+      <Modal isOpen={modal}/>
       <div>다음 중 알고 있는 단어를 골라주세요</div>
       <div>알고 있는 단어는 다시는 단어장에 뜨지 않습니다.</div>
       {state.wordList.map((item :string)=>{

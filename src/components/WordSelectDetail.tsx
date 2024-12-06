@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
-import { WordSelectDetailProps } from '../common/types'
+
+interface WordSelectDetailProps {
+  word:string,
+  appendWord:Function,
+  deleteWord:Function
+}
 
 const WordSelectDetail:React.FC<WordSelectDetailProps> = ({word, appendWord, deleteWord}) => {
     const [isSelected, setIsSelected] = useState<boolean>(false)
