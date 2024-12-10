@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import WordDetail from '../components/WordDetail'
-
-const Vocabulary = () => {
+import WordDetail from '../components/WordCard'
+import '../css/vocabularyDetail.css'
+const VocabularyDetail = () => {
     const {id} = useParams()
     const [voca, setVoca]= useState<Array<string>>([])
     useEffect(()=>{
@@ -22,12 +22,16 @@ const Vocabulary = () => {
         effect(id)
     },[])
   return (
-    <div>
-      {voca.map(item=>{
-        return <WordDetail word={item} />
-      })}
-    </div>
+    <>
+      <div></div>
+      <div className='vocabularyDetail'>
+        {voca.map(item=>{
+          return <WordDetail word={item} />
+        })}
+      </div>
+    </>
+    
   )
 }
 
-export default Vocabulary
+export default VocabularyDetail

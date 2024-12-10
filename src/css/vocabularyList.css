@@ -1,0 +1,20 @@
+.listTitle {
+    padding-top:2vh;
+    font-size:130%;
+}
+
+.vocabularyListContainer {
+    display:flex;
+    flex-direction: column; 
+}
+
+.vocabularyListItem {
+    background-color: #2C2C2C;
+    border-radius: 8px;
+    display:flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 5vh;
+    margin-top:2vh;
+    color:white;
+}

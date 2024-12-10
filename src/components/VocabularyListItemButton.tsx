@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../css/vocabularyListItemButton.css'
 const VocabularyListItemButton = () => {
     const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false)
     const onClick = () => {

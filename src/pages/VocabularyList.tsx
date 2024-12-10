@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { VocabularyListType } from '../common/types'
-import VocabularyListItem from '../components/VocabularyListItem'
-
+import VocabularyListItem from '../components/VocabularyItem'
+import '../css/vocabularyList.css'
 const VocabularyList = () => {
   const [list,setList] = useState<VocabularyListType[]>([])
   
@@ -19,9 +19,11 @@ const VocabularyList = () => {
   },[])
   return (
     <div>
+      <div className='listTitle'>단어장 목록</div>
+      <div className='vocabularyListContainer'>
+        {list.map((item)=><VocabularyListItem key={item.id} list={item}/>)}
+      </div>
       
-      <div>단어장 목록</div>
-      {list.map((item)=><VocabularyListItem key={item.id} list={item}/>)}
     </div>
   )
 }
