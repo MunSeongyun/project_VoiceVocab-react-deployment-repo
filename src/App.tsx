@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
-import WordSelect from './pages/WordSelect'
+import KnownWordsSelection from './pages/KnownWordsSelection'
 import VocabularyList from './pages/VocabularyList'
 import Login from './components/Login'
-
+import VocabularyDetail from './pages/VocabularyDetail'
+import './css/app.css'
 function App() {
   return (
     <>
@@ -11,8 +12,9 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />}/>
-          <Route path='/select' element={<WordSelect />}/>
+          <Route path='/filter-known-word' element={<KnownWordsSelection />}/>
           <Route path='/vocabulary-list' element={<VocabularyList />}/>
+          <Route path='/vocabulary-detail/:id' element={<VocabularyDetail />}/>
         </Routes>
       </Router>
     </>

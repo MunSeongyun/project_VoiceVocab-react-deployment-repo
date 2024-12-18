@@ -1,0 +1,58 @@
+.vocabularyDetail {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.wordCardtrue {
+    padding: 2px;
+    margin: 2px;
+    width: 23vw;
+    height: 7vh;
+    display:flex;
+    justify-content: center; 
+    align-items: center; 
+    border: 1px solid #2C2C2C;
+    border-radius: 8px; 
+}
+
+.wordCardfalse {
+    padding: 2px;
+    margin: 2px;
+    width: 23vw;
+    height: 7vh;
+    display:flex;
+    justify-content: center; 
+    align-items: center; 
+    border: 1px solid #2C2C2C;
+    border-radius: 8px; 
+    background-color: gray;
+}
+
+.wordCard{
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.wordCardButton {
+    width:5vw;
+    height:2vw;
+    min-width:5vw;
+    min-height:2vw;
+    font-size:50%
+}
+
+.buttonWrapper{
+    display:flex;
+    flex-direction: row-reverse;
+    min-width:5vw;
+    min-height:2vw;
+}
+
+.wordWrapper{
+    display: block;
+    margin-left:5%;
+    width:100%;
+}
