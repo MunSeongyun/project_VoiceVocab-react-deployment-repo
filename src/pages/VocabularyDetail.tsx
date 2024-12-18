@@ -2,9 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import WordDetail from '../components/WordCard'
 import '../css/vocabularyDetail.css'
+import Modal from '../components/Modal'
 const VocabularyDetail = () => {
     const {id} = useParams()
+    const [modal, setModal] = useState<boolean>(false)
+    const [script, setScript] = useState<string>('')
     const [voca, setVoca]= useState<Array<string>>([])
+    const deleteWord = (word:string) => {
+      setVoca(voca.filter(item=>item!==word))
+    }
     useEffect(()=>{
         if(!id){
             return alert('잘못된 접근입니다.')
@@ -21,12 +27,23 @@ const VocabularyDetail = () => {
         }
         effect(id)
     },[])
+    const onclick = async () => {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/script/${id}`,{
+        credentials:'include'
+      })
+      if(response.ok){
+        const data = await response.json()
+        setScript(data.data)
+        setModal(true)
+      }
+    }
   return (
     <>
-      <div></div>
+      <Modal isOpen={modal} setIsOpen={()=>{setModal(false)}} text={script} />
+      <div><button onClick={onclick}>스크립트 보기</button></div>
       <div className='vocabularyDetail'>
         {voca.map(item=>{
-          return <WordDetail word={item} />
+          return <WordDetail key={item} deleteWord={deleteWord} word={item} />
         })}
       </div>
     </>

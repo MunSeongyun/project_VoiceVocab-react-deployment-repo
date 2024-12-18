@@ -3,9 +3,14 @@
     border-radius: 8px;
     box-shadow: inset;
     padding: 20px;
+    max-height: 90vh;
     position: relative;
+    margin:10vw;
+    overflow:auto;
+    z-index:101;
 }
 .modal-overlay{
+    z-index:100;
     position: fixed;
     top: 0;
     left: 0;

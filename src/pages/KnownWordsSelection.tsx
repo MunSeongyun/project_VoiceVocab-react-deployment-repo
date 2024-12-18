@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import WordSelectDetail from '../components/WordSelectDetail'
 import { useState } from 'react'
-import Modal from '../components/LoadingModal'
+import Modal from '../components/Modal'
 import '../css/knownWordsSelection.css'
 const KnownWordsSelection = () => {
   const [modal, setModal] = useState<boolean>(false)

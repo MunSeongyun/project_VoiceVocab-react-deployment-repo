@@ -28,3 +28,31 @@
     border-radius: 8px; 
     background-color: gray;
 }
+
+.wordCard{
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.wordCardButton {
+    width:5vw;
+    height:2vw;
+    min-width:5vw;
+    min-height:2vw;
+    font-size:50%
+}
+
+.buttonWrapper{
+    display:flex;
+    flex-direction: row-reverse;
+    min-width:5vw;
+    min-height:2vw;
+}
+
+.wordWrapper{
+    display: block;
+    margin-left:5%;
+    width:100%;
+}

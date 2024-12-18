@@ -18,6 +18,7 @@ const Login = () => {
       <div className="loginSuccess">
         <div>{user.name} 님 환영합니다!</div>
         <a href="/vocabulary-list">단어장 목록으로 이동</a>
+        <a href="/">메인으로 이동</a>
       </div>
       
     )
