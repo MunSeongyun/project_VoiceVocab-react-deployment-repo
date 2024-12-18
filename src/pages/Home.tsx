@@ -32,6 +32,7 @@ const Home = () => {
       headers:{
         'Content-type':'application/json'
       },
+      credentials:'include',
       body:JSON.stringify({
         text:inputRef.current?.value
       })

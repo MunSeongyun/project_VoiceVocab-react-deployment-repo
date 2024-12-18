@@ -9,11 +9,12 @@ interface WordDetailProps {
 
 const WordDetail: React.FC<WordDetailProps> = ({ word ,deleteWord}) => {
     const [front, back] = word.split(',');
+    
     const {pathname} = useLocation()
     const [isOpen,setIsOpen] = useState<boolean>(false)
     const [isFront, setIsFront] = useState<boolean>(true);
     const [confirm, setConfirm] = useState<boolean>(false);
-    if(!front || !back){
+    if(!front){
       return <></>
     }
     const handleClick = () => {
@@ -46,7 +47,7 @@ const WordDetail: React.FC<WordDetailProps> = ({ word ,deleteWord}) => {
         setIsOpen(true)
     }
     return (
-        <>
+        back? <>
             <GetResponseModal setAnswer={(res:boolean)=>{setConfirm(res)}} isOpen={isOpen} setIsOpen={()=>{setIsOpen(false)}} text={`${front}를 아는 단어에 추가할까요?`} />
             <div className='wordCard'>
                 <div onClick={handleClick} className={`wordCard${isFront}`}>
@@ -56,6 +57,16 @@ const WordDetail: React.FC<WordDetailProps> = ({ word ,deleteWord}) => {
                     <div className='buttonWrapper'>
                         <button className='wordCardButton'onClick={(e) => { e.stopPropagation(); addKnownWord(); }}>알아요</button>
                     </div>
+                </div>
+            </div>
+        </>:
+        <>
+            <div className='wordCard'>
+                <div onClick={handleClick} className={`wordCardtrue`}>
+                    <div className='wordWrapper'>
+                        {`${front}`}
+                    </div>
+                    
                 </div>
             </div>
         </>

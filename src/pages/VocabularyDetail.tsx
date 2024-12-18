@@ -3,6 +3,11 @@ import { useParams } from 'react-router-dom'
 import WordDetail from '../components/WordCard'
 import '../css/vocabularyDetail.css'
 import Modal from '../components/Modal'
+type KnownWord = {
+  id : number
+  userId : number
+  word : string
+}
 const VocabularyDetail = () => {
     const {id} = useParams()
     const [modal, setModal] = useState<boolean>(false)
@@ -25,7 +30,23 @@ const VocabularyDetail = () => {
                 setVoca(data.data.split('\n'))
             }
         }
-        effect(id)
+        async function effectKnown() {
+          const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/known-list`,{
+            method:'GET',
+            credentials:'include'
+          })
+          if(response.ok){
+            const data = await response.json()
+            
+            setVoca(data.data.map((item:KnownWord)=>item.word))
+          }
+        }
+        if(id === 'known'){
+          effectKnown()
+        }else{
+          effect(id)
+        }
+        
     },[])
     const onclick = async () => {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/vocabulary/script/${id}`,{
@@ -37,6 +58,7 @@ const VocabularyDetail = () => {
         setModal(true)
       }
     }
+    
   return (
     <>
       <Modal isOpen={modal} setIsOpen={()=>{setModal(false)}} text={script} />
