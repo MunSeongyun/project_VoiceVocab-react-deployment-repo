@@ -42,4 +42,4 @@ jobs:
           # S3 웹사이트 설정을 위한 명령 (필요시)
           # aws s3 website s3://action-practice-bapull --index-document index.html --error-document index.html
           # Optionally invalidate CloudFront cache
-          aws cloudfront create-invalidation --distribution-id YOUR_CLOUDFRONT_ID --paths "/*"
+          aws cloudfront create-invalidation --distribution-id E2ZHIVXEU9SI69 --paths "/*"
