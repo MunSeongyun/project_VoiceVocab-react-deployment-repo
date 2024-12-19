@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 const VocabularyListItemButton = () => {
     const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false)
     const onClick = () => {

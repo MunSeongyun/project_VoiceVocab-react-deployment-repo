@@ -16,5 +16,7 @@ export const useAuth = () => {
         user,
         login,
         isLoading,
+        error,
+        mutate
     }
 }
