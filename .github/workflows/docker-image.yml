@@ -50,7 +50,7 @@ jobs:
           docker pull ${{ secrets.DOCKER_USERNAME }}/voicevocab:latest
           docker stop voicevocab || true
           docker rm voicevocab || true
-          docker run -d -p 5173:5173 --name voicevocab \
+          docker run -d -p 80:80 -p 443:443 --name voicevocab \
           -e VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} \
           -v /home/${{ secrets.EC2_USER }}/voicevocab.store:/etc/voicevocab \
           ${{ secrets.DOCKER_USERNAME }}/voicevocab:latest
