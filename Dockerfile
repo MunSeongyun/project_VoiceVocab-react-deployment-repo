@@ -2,6 +2,8 @@ FROM node:20-buster AS build
 
 WORKDIR /app
 
+ARG VITE_BACKEND_URL=https://www.bapull.store
+
 COPY package.json .
 RUN npm install
 
