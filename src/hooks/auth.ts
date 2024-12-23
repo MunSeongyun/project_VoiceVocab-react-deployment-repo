@@ -1,8 +1,8 @@
 import useSWR from 'swr'
 
 export const useAuth = () => {
-    const { data: user, error, mutate, isLoading } = useSWR('http://localhost:3012/user/info', () =>
-        fetch('http://localhost:8080/auth/user-info',{
+    const { data: user, error, mutate, isLoading } = useSWR(`${import.meta.env.VITE_BACKEND_URL}/user/info`, () =>
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/user-info`,{
             credentials:'include'
         })
         .then(res => res.json())   
