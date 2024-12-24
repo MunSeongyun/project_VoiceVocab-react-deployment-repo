@@ -2,7 +2,7 @@ FROM node:20-buster AS build
 
 WORKDIR /app
 
-ARG VITE_BACKEND_URL=https://www.bapull.store
+ARG VITE_BACKEND_URL=https://api.voicevocab.store
 
 COPY package.json .
 RUN npm install
