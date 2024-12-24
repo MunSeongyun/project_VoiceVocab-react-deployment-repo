@@ -1,4 +1,4 @@
-name: Deploy FastAPI to EC2
+name: Deploy React to EC2
 
 on:
   push:
