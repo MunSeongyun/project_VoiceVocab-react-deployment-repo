@@ -18,6 +18,7 @@ const KnownWordsSelection = () => {
   const deleteAtKnownWordList = (word: string) => {
     setKnownWordList(prev=>prev.filter((item)=>item!==word))
   }
+
   /** 단어장 업로드 */
   const onSave = async () => {
     setModal(true) // 모달 표시
@@ -35,7 +36,8 @@ const KnownWordsSelection = () => {
       body:JSON.stringify({
         script: state.script,
         wordList:[...wordList],
-        knownWordList:knownWordList
+        knownWordList:knownWordList,
+        language:state.language
       })
     })
     if(response.ok){
