@@ -27,7 +27,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t voicevocab .
+        docker build --build-arg CACHE_BUSTER=$(date +%s) -t voicevocab .
 
     - name: Login to DockerHub
       uses: docker/login-action@v2
