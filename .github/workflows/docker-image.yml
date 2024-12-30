@@ -2,7 +2,7 @@ name: Deploy React to EC2
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "fix/dockerfile" ]
 
 jobs:
 
@@ -16,7 +16,7 @@ jobs:
       
     - name: Build Docker image
       run: |
-        docker build --build-arg CACHE_BUSTER=$(date +%s) -t voicevocab .
+        docker build --build-arg VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} -t voicevocab .
 
     - name: Login to DockerHub
       uses: docker/login-action@v2
@@ -26,8 +26,8 @@ jobs:
 
     - name: Push Docker image to DockerHub
       run: |
-        docker tag voicevocab ${{ secrets.DOCKER_USERNAME }}/voicevocab:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/voicevocab:latest
+        docker tag voicevocab ${{ secrets.DOCKER_USERNAME }}/voicevocab:${{ github.sha }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/voicevocab:${{ github.sha }}
 
     - name: SSH to EC2 and deploy
       uses: appleboy/ssh-action@v0.1.7
@@ -36,10 +36,10 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
         script: |
-          docker pull --no-cache ${{ secrets.DOCKER_USERNAME }}/voicevocab:latest
+          docker pull --no-cache ${{ secrets.DOCKER_USERNAME }}/voicevocab:${{ github.sha }}
           docker stop voicevocab || true
           docker rm voicevocab || true
           docker run -d -p 80:80 -p 443:443 --name voicevocab \
           -e VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} \
           -v /home/${{ secrets.EC2_USER }}/voicevocab.store:/etc/voicevocab \
-          ${{ secrets.DOCKER_USERNAME }}/voicevocab:latest
+          ${{ secrets.DOCKER_USERNAME }}/voicevocab:${{ github.sha }}

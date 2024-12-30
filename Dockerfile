@@ -7,8 +7,6 @@ ARG VITE_BACKEND_URL=https://api.voicevocab.store
 COPY package.json .
 RUN npm install
 
-ARG CACHE_BUSTER=1
-ENV CACHE_BUSTER=${CACHE_BUSTER}
 COPY . .
 RUN npm run build
 
