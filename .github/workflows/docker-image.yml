@@ -36,7 +36,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
         script: |
-          docker pull --no-cache ${{ secrets.DOCKER_USERNAME }}/voicevocab:${{ github.sha }}
+          docker pull ${{ secrets.DOCKER_USERNAME }}/voicevocab:${{ github.sha }}
           docker stop voicevocab || true
           docker rm voicevocab || true
           docker run -d -p 80:80 -p 443:443 --name voicevocab \
