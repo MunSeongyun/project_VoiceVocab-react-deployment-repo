@@ -13,7 +13,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+    
+    - name: Set up cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
     - name: Build Docker image
       run: |
         docker build --build-arg VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} -t voicevocab .
